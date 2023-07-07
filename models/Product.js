@@ -27,12 +27,17 @@ Product.init(
     stock: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      //TODO sets default value to 10
-      //TODO validates that the value is numeric
+      defaultValue: 10,
+      //validates that the value is numeric
+      isNumeric: true
     },
     category_id: {
       type: DataTypes.INTEGER,
-      //TODO references the category model's ID
+      //references the category model's ID
+      references: {
+        model: 'category',
+        key: 'id'
+      }
     }
   },
   {
