@@ -9,11 +9,14 @@ router.get('/', async (req, res) => {
   // be sure to include its associated Category and Tag data
   try {
     const products = await Product.findAll({
-      include: [Category, { model: Tag, through: ProductTag }]
+      include: [Category, { 
+        model: Tag, 
+        through: ProductTag 
+      }]
     })
     res.status(200).json(products)
-  } catch (err) {
-    res.status(500).json(err)
+  } catch (error) {
+    res.status(500).json(error)
   }
 });
 
@@ -59,9 +62,9 @@ router.post('/', (req, res) => {
       res.status(200).json(product);
     })
     .then((productTagIds) => res.status(200).json(productTagIds))
-    .catch((err) => {
-      console.log(err);
-      res.status(400).json(err);
+    .catch((error) => {
+      console.log(error);
+      res.status(400).json(error);
     });
 });
 
@@ -104,9 +107,9 @@ router.put('/:id', (req, res) => {
 
       return res.json(product);
     })
-    .catch((err) => {
+    .catch((error) => {
       // console.log(err);
-      res.status(400).json(err);
+      res.status(400).json(error);
     });
 });
 

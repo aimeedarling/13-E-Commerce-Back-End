@@ -11,8 +11,8 @@ router.get('/', async (req, res) => {
       include: [{model: Product}]
     })
     res.status(200).json(allCategories)
-  }catch (err) {
-    res.status(500).json(err)
+  }catch (error) {
+    res.status(500).json(error)
   }
 });
 
@@ -25,8 +25,8 @@ router.get('/:id', async (req, res) => {
     })
     res.status(200).json(allCategories)
     
-  } catch (err) {
-    res.sendStatus(500).json(err)
+  } catch (error) {
+    res.sendStatus(500).json(error)
   }
 });
 
@@ -35,8 +35,8 @@ router.post('/', async (req, res) => {
   try {
     const newCategory = await Category.create(req.body)
     res.status(201).json(newCategory)
-  }catch (err){
-    res.status(400).json(err)
+  }catch (error){
+    res.status(400).json(error)
   }
 });
 
@@ -65,8 +65,8 @@ router.delete('/:id', async (req, res) => {
       res.status(404).json({ message: 'No such category. Try again.'})
     }
     res.status(200).json(deleteCategory)
-  }catch (err) {
-    res.status(500).json(err)
+  }catch (error) {
+    res.status(500).json(error)
   }
 });
 
