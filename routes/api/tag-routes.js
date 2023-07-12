@@ -67,6 +67,7 @@ router.delete('/:id', async (req, res) => {
     if(!deleteTag){
       res.status(404).json({message: 'No such tag. Try again'})
     }
+    res.status(200).json(deleteTag)
   } catch (error) {
     
   }
